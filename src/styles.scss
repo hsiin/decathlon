@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:ital,wght@0,400;0,700;1,700&display=swap");
+// @import '@vtmn/icons/dist/vitamix/font/vitamix.css';
+@import "@vtmn/css/dist/index.css";
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/style/index.min.css"; /* Import base styles */
+@import "~ng-zorro-antd/button/style/index.min.css"; /* Import one component's styles */

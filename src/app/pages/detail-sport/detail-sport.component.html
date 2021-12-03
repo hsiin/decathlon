@@ -1,0 +1,49 @@
+<div class="vtmn-card vtmn-card_variant--side-image">
+  <div class="vtmn-card_image">
+    <img [src]="sportItem.relationships.images.data[0].url" alt="" />
+  </div>
+  <div class="vtmn-card_content">
+    <span class="title-container vtmn-card_content--title"
+      >{{ sportItem.attributes.name }}
+      <img
+        *ngIf="sportItem.attributes.icon !== null"
+        style="
+          display: flex;
+          align-items: right;
+          max-width: 100px;
+          padding: 20px;
+        "
+        [src]="sportItem.attributes.icon"
+        alt="sport icon"
+      />
+    </span>
+    <span class="vtmn-card_content--body">
+      {{ sportItem.attributes.description }}
+    </span>
+    <span class="vtmn-flex vtmn-flex-row vtmn-flex-wrap">
+      <div
+        style="padding: 6px"
+        class="block vtmn-flex vtmn-flex-row vtmn-flex-wrap"
+        *ngFor="let tag of sportItem?.relationships?.tags.data"
+      >
+        <div class="vtmn-chip vtmn-chip_variant--single-choice" tabindex="0">
+          #{{ tag }}
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="sportItem?.relationships.children.length > 0 && !loader.isLoading">
+  <h3 style="padding: 20px; font-weight: 10px">Other similar sports :</h3>
+  <div class="block vtmn-flex vtmn-flex-row vtmn-flex-wrap">
+    <div
+      *ngFor="let child of sportItem?.relationships?.children; let i = index"
+      class="vtmn-chip vtmn-chip_variant--filter vtmn-chip--selected"
+      tabindex="0"
+      (click)="getSportById(child.data.id)"
+    >
+      Sport{{ i + 1 }}
+    </div>
+  </div>
+</div>

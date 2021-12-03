@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="block spacing" *ngFor="let sport of sports">
+    <div
+      *ngIf="sport.id !== null"
+      class="vtmn-card"
+      (click)="details(sport.id)"
+    >
+      <div class="vtmn-card_image" *ngIf="!loader.isLoading">
+        <img
+          [src]="sport.relationships.images.data[0]?.variants[0].medium.url"
+          alt=""
+        />
+      </div>
+      <div class="vtmn-card_content">
+        <span class="vtmn-card_content--title">{{
+          sport.attributes.name
+        }}</span>
+        <span
+          class="vtmn-card_content--body"
+          *ngIf="sport.attributes.description !== null"
+        >
+          {{ sport.attributes.description }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
